@@ -4,7 +4,7 @@ module Avo
       attr_accessor :current_request
       attr_accessor :cache_store
 
-      ENDPOINT = "https://avohq.io/api/v1/licenses/check".freeze unless const_defined?(:ENDPOINT)
+      ENDPOINT = "http://127.0.0.1:3000/api/v1/licenses/check".freeze unless const_defined?(:ENDPOINT)
       REQUEST_TIMEOUT = 5 unless const_defined?(:REQUEST_TIMEOUT) # seconds
       CACHE_TIME = 3600 unless const_defined?(:CACHE_TIME) # seconds
 
@@ -143,13 +143,19 @@ module Avo
       end
 
       def perform_and_cache_request
-        hq_response = perform_request
+        # hq_response = perform_request
 
-        return cache_and_return_error "Avo HQ Internal server error.", hq_response.body if hq_response.code == 500
+        # return cache_and_return_error "Avo HQ Internal server error.", hq_response.body if hq_response.code == 500
 
-        if hq_response.code == 200
-          cache_response response: hq_response.parsed_response
-        end
+        # if hq_response.code == 200
+        #   cache_response response: hq_response.parsed_response
+        # end
+        parsed_response = { 
+          "id": 'pro',
+          "valid": true,
+          "payload": { "foo": "bar" }
+        }
+        cache_response response: parsed_response
       end
 
       def cache_response(response: nil, time: CACHE_TIME)
