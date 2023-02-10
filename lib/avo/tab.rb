@@ -7,6 +7,7 @@ class Avo::Tab
   delegate :items, :add_item, to: :items_holder
 
   attr_reader :name
+  attr_reader :label
   attr_reader :view
   attr_accessor :description
   attr_accessor :items_holder
