@@ -17,6 +17,7 @@ class Avo::Tab
     super
 
     # @name = name
+    @label = name
     @name = name.to_s.to_slug.transliterate(:bulgarian).normalize.to_s
     @description = description
     @holds_one_field = holds_one_field

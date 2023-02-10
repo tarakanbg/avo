@@ -14,7 +14,7 @@
             action: 'click->tabs#changeTab',
             tabs_id_param: tab.name
           } do %>
-          <%= tab.name %>
+          <%= tab.label %>
         <% end %>
       <% end %>
     </div>
@@ -34,7 +34,7 @@
         action: 'click->tabs#changeTab',
         tabs_id_param: tab.name
       } do %>
-        <%= tab.name %>
+        <%= tab.label %>
       <% end %>
     <% end %>
   </div>
