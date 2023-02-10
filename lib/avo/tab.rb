@@ -16,7 +16,8 @@ class Avo::Tab
     # Initialize the visibility markers
     super
 
-    @name = name
+    # @name = name
+    @name = name.to_s.to_slug.transliterate(:bulgarian).normalize.to_s
     @description = description
     @holds_one_field = holds_one_field
     @items_holder = Avo::ItemsHolder.new
